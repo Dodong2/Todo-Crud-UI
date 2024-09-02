@@ -17,7 +17,7 @@ function App() {
 
   //Pages
   // const User = lazy(() => import('./pages/User'))
-  const Home = lazy(() => import("./pages/Home"));
+  const Status = lazy(() => import("./pages/Status"));
   
 
   return (
@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Suspense fallback={<>Loading...</>}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Status/>} />
             {/* <Route path="/" element={<User/>}/> */}
           </Routes>
         </Suspense>
