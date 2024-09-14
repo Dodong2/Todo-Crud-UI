@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from '../services/ApiService'
 
-const usefetchData = () => {
+const useFetchData = () => {
     const [data, setData] = useState<{ success: string; message: string } | null>(null)
     const [error, setError] = useState<string | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
@@ -23,4 +23,4 @@ const usefetchData = () => {
     return {data, error, loading}
 }
 
-export default usefetchData
+export default useFetchData

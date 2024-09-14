@@ -1,9 +1,9 @@
-import usefetchData from "../hooks/useFetchData"
+import useFetchData from "../hooks/useFetchData";
 
 
 const DatabaseStatus = () => {
 
-    const {data, error, loading} = usefetchData()
+    const {data, error, loading} = useFetchData()
 
     if(loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>
