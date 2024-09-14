@@ -8,12 +8,18 @@ const TodoLists = () => {
     const [content, setContent] = useState('')
     const [time, setTime] = useState('')
     
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        addTodo(title, content, time)
+
+        const result = await addTodo(title, content, time)
+
+        if (result.success) {
         setTitle('')
         setContent('')
         setTime('')
+        } else {
+            alert('Failed to add')
+        }
     }
 
   return (
@@ -48,6 +54,7 @@ const TodoLists = () => {
                 <li key={todo.id}>
                     <span>{todo.title}</span>
                     <span>{todo.content}</span>
+                    <span>{todo.time}</span>
                     <button onClick={() => removeTodo(todo.id)}>Delete</button>
                 </li>
             ))}

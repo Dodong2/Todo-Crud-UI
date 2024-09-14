@@ -9,7 +9,6 @@ type Todo = {
     time: string
 }
 
-
 export const useTodos = () => {
     const [todos, setTodos] = useState<Todo[]>([])
     const [loading, setLoading] = useState<boolean>(false)
@@ -27,12 +26,16 @@ export const useTodos = () => {
         fetchTodos()
     }, [])
 // Hooks para kay add todo
-    const addTodo = async (title: string, content: string, time: string) => {
-        const result = await createTodo(title, content, time)
-        if(result.succes) {
-            setTodos(prev => [...prev, { id: result.id, title, content, time }])
-        }
-    } 
+const addTodo = async (title: string, content: string, time: string) => {
+    const result = await createTodo(title, content, time)
+    if(result.success) {
+        setTodos(prevTodos => [
+            ...prevTodos, 
+            { id: new Date().getTime().toString(), title, content, time }
+        ])
+    }
+    return result
+}
 
 //Hooks para sa remove todo
 const removeTodo = async (id:string) => {
